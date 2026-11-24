@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { TOURS, Vibe } from "@/data/tours";
 import { Clock, MapPin, Users, Check, ArrowRight, MessageCircle } from "lucide-react";
 
@@ -147,12 +148,14 @@ export function TourShowcase() {
 
                 {/* Card Content */}
                 <div className="p-5 sm:p-6">
-                  <h3
-                    className="text-xl sm:text-2xl font-normal leading-snug text-[#1A1D1A] group-hover:text-[#E86338] transition-colors"
-                    style={{ fontFamily: "var(--font-serif)" }}
-                  >
-                    {tour.title}
-                  </h3>
+                  <Link href={`/tours/${tour.slug}`} className="block group/link">
+                    <h3
+                      className="text-xl sm:text-2xl font-normal leading-snug text-[#1A1D1A] group-hover/link:text-[#E86338] transition-colors"
+                      style={{ fontFamily: "var(--font-serif)" }}
+                    >
+                      {tour.title}
+                    </h3>
+                  </Link>
 
                   <p className="mt-2 text-xs sm:text-sm leading-relaxed text-[#1A1D1A]/70 line-clamp-2">
                     {tour.tagline}
@@ -196,15 +199,25 @@ export function TourShowcase() {
                   </div>
                 </div>
 
-                <a
-                  href={waUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-4 flex w-full items-center justify-center gap-2 rounded-xl bg-[#1A1D1A] px-4 py-2.5 text-xs sm:text-sm font-semibold text-white transition-all hover:bg-[#E86338] active:scale-[0.99]"
-                >
-                  <MessageCircle className="h-4 w-4" />
-                  <span>Book via WhatsApp</span>
-                </a>
+                <div className="mt-4 grid grid-cols-2 gap-2">
+                  <Link
+                    href={`/tours/${tour.slug}`}
+                    className="flex items-center justify-center gap-1.5 rounded-xl border border-[#1A1D1A]/20 bg-white px-3 py-2.5 text-xs sm:text-sm font-semibold text-[#1A1D1A] transition-all hover:border-[#E86338] hover:text-[#E86338] shadow-2xs"
+                  >
+                    <span>Details</span>
+                    <ArrowRight className="h-3.5 w-3.5" />
+                  </Link>
+
+                  <a
+                    href={waUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center gap-1.5 rounded-xl bg-[#1A1D1A] px-3 py-2.5 text-xs sm:text-sm font-semibold text-white transition-all hover:bg-[#E86338] active:scale-[0.99] shadow-xs"
+                  >
+                    <MessageCircle className="h-4 w-4" />
+                    <span>WhatsApp</span>
+                  </a>
+                </div>
               </div>
             </article>
           );

@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { ChevronDown, Menu, X, MessageCircle, MapPin, Sparkles } from "lucide-react";
+import { ChevronDown, Menu, X, MessageCircle, MapPin } from "lucide-react";
 
 interface NavbarProps {
   whatsappNumber?: string;
@@ -32,11 +32,12 @@ export function Navbar({ whatsappNumber = "6281234567890" }: NavbarProps) {
   )}`;
 
   const destinations = [
-    { name: "Ubud & Sacred Waterfalls", href: "#tours" },
-    { name: "Nusa Penida Private Island", href: "#tours" },
-    { name: "Uluwatu Sunset & Seafood", href: "#tours" },
-    { name: "Mount Batur 4WD Sunrise", href: "#tours" },
-    { name: "Sidemen & East Bali Culture", href: "#tours" },
+    { name: "Mist & Mantras (Ubud)", href: "/tours/ubud-spiritual-escape" },
+    { name: "Cliffs & Coves (Nusa Penida)", href: "/tours/nusa-penida-west-private" },
+    { name: "Golden Cliffside (Uluwatu)", href: "/tours/uluwatu-sunset-culinary" },
+    { name: "Volcano Dawn (Mount Batur 4WD)", href: "/tours/batur-sunrise-jeep" },
+    { name: "Backroads & Spices (Sidemen)", href: "/tours/sidemen-culinary-trail" },
+    { name: "Highland Eden (North Bali)", href: "/tours/north-bali-waterfalls" },
   ];
 
   return (
@@ -75,15 +76,15 @@ export function Navbar({ whatsappNumber = "6281234567890" }: NavbarProps) {
             href="/"
             className={`transition-colors py-1 ${
               isScrolled
-                ? "text-[#E86338] font-semibold"
-                : "text-[#E86338] font-semibold"
+                ? "text-[#181A18]/80 hover:text-[#E86338]"
+                : "text-white/90 hover:text-white"
             }`}
           >
             Home
           </Link>
 
-          <a
-            href="#why-us"
+          <Link
+            href="/about"
             className={`transition-colors py-1 ${
               isScrolled
                 ? "text-[#181A18]/80 hover:text-[#E86338]"
@@ -91,7 +92,7 @@ export function Navbar({ whatsappNumber = "6281234567890" }: NavbarProps) {
             }`}
           >
             About Us
-          </a>
+          </Link>
 
           {/* Destinations Dropdown */}
           <div
@@ -99,8 +100,8 @@ export function Navbar({ whatsappNumber = "6281234567890" }: NavbarProps) {
             onMouseEnter={() => setIsDestDropdownOpen(true)}
             onMouseLeave={() => setIsDestDropdownOpen(false)}
           >
-            <a
-              href="#tours"
+            <Link
+              href="/#tours"
               className={`inline-flex items-center gap-1.5 py-1 transition-colors ${
                 isScrolled
                   ? "text-[#181A18]/80 hover:text-[#E86338]"
@@ -113,28 +114,41 @@ export function Navbar({ whatsappNumber = "6281234567890" }: NavbarProps) {
                   isDestDropdownOpen ? "rotate-180" : ""
                 }`}
               />
-            </a>
+            </Link>
 
             {/* Dropdown Menu */}
             {isDestDropdownOpen && (
-              <div className="absolute top-full left-0 mt-2 w-64 rounded-xl border border-black/10 bg-white p-2 shadow-xl backdrop-blur-lg">
+              <div className="absolute top-full left-0 mt-2 w-72 rounded-2xl border border-black/10 bg-white p-2 shadow-2xl backdrop-blur-lg">
+                <div className="px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider text-[#181A18]/50">
+                  Select a Curated Journey
+                </div>
                 {destinations.map((dest) => (
-                  <a
+                  <Link
                     key={dest.name}
                     href={dest.href}
                     onClick={() => setIsDestDropdownOpen(false)}
-                    className="flex items-center gap-2 rounded-lg px-3 py-2 text-xs font-medium text-[#181A18]/85 hover:bg-[#FAF8F5] hover:text-[#E86338] transition-colors"
+                    className="flex items-center gap-2 rounded-xl px-3 py-2 text-xs font-medium text-[#181A18]/85 hover:bg-[#FAF8F5] hover:text-[#E86338] transition-colors"
                   >
-                    <MapPin className="h-3.5 w-3.5 text-[#E86338]" />
-                    <span>{dest.name}</span>
-                  </a>
+                    <MapPin className="h-3.5 w-3.5 text-[#E86338] shrink-0" />
+                    <span className="truncate">{dest.name}</span>
+                  </Link>
                 ))}
+                <div className="mt-1 border-t border-[#181A18]/10 pt-1">
+                  <Link
+                    href="/#tours"
+                    onClick={() => setIsDestDropdownOpen(false)}
+                    className="flex items-center justify-between rounded-xl px-3 py-2 text-xs font-semibold text-[#E86338] hover:bg-[#FAF8F5]"
+                  >
+                    <span>View All Packages</span>
+                    <span>→</span>
+                  </Link>
+                </div>
               </div>
             )}
           </div>
 
-          <a
-            href="#reviews"
+          <Link
+            href="/#reviews"
             className={`transition-colors py-1 ${
               isScrolled
                 ? "text-[#181A18]/80 hover:text-[#E86338]"
@@ -142,10 +156,10 @@ export function Navbar({ whatsappNumber = "6281234567890" }: NavbarProps) {
             }`}
           >
             Guest Stories
-          </a>
+          </Link>
 
-          <a
-            href="#faq"
+          <Link
+            href="/#faq"
             className={`transition-colors py-1 ${
               isScrolled
                 ? "text-[#181A18]/80 hover:text-[#E86338]"
@@ -153,12 +167,10 @@ export function Navbar({ whatsappNumber = "6281234567890" }: NavbarProps) {
             }`}
           >
             FAQ
-          </a>
+          </Link>
 
-          <a
-            href={waUrl}
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            href="/contact"
             className={`transition-colors py-1 ${
               isScrolled
                 ? "text-[#181A18]/80 hover:text-[#E86338]"
@@ -166,7 +178,7 @@ export function Navbar({ whatsappNumber = "6281234567890" }: NavbarProps) {
             }`}
           >
             Contact Us
-          </a>
+          </Link>
         </nav>
 
         {/* Right CTA & Flag */}
@@ -208,7 +220,7 @@ export function Navbar({ whatsappNumber = "6281234567890" }: NavbarProps) {
             rel="noopener noreferrer"
             className="rounded-lg bg-[#E86338] px-3 py-1.5 text-xs font-semibold text-white shadow-xs"
           >
-            Book Now
+            Book
           </a>
 
           <button
@@ -239,34 +251,41 @@ export function Navbar({ whatsappNumber = "6281234567890" }: NavbarProps) {
             >
               Home
             </Link>
-            <a
-              href="#tours"
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="py-1 hover:text-[#E86338]"
-            >
-              Destinations & Packages
-            </a>
-            <a
-              href="#why-us"
+            <Link
+              href="/about"
               onClick={() => setIsMobileMenuOpen(false)}
               className="py-1 hover:text-[#E86338]"
             >
               About Us / The Difference
-            </a>
-            <a
-              href="#reviews"
+            </Link>
+            <Link
+              href="/#tours"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="py-1 hover:text-[#E86338]"
+            >
+              Destinations & Packages
+            </Link>
+            <Link
+              href="/#reviews"
               onClick={() => setIsMobileMenuOpen(false)}
               className="py-1 hover:text-[#E86338]"
             >
               Guest Stories & Reviews
-            </a>
-            <a
-              href="#faq"
+            </Link>
+            <Link
+              href="/#faq"
               onClick={() => setIsMobileMenuOpen(false)}
               className="py-1 hover:text-[#E86338]"
             >
               FAQ
-            </a>
+            </Link>
+            <Link
+              href="/contact"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="py-1 hover:text-[#E86338]"
+            >
+              Contact Us
+            </Link>
             <a
               href={waUrl}
               target="_blank"
