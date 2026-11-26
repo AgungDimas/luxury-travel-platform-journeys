@@ -1,6 +1,7 @@
 "use client";
 
 import { MessageCircle } from "lucide-react";
+import { CONTACT_INFO } from "@/data/contact";
 
 interface FloatingWhatsAppProps {
   whatsappNumber?: string;
@@ -8,7 +9,7 @@ interface FloatingWhatsAppProps {
 }
 
 export function FloatingWhatsApp({
-  whatsappNumber = "6281234567890",
+  whatsappNumber = CONTACT_INFO.whatsappNumber,
   defaultMessage = "Hi Dewata Tour! I would like to inquire about private tours in Bali.",
 }: FloatingWhatsAppProps) {
   const waUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(defaultMessage)}`;

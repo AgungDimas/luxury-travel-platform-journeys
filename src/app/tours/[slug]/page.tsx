@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { TOURS, getTourBySlug } from "@/data/tours";
+import { CONTACT_INFO } from "@/data/contact";
 import { Navbar } from "@/Components/Navbar";
 import { FloatingWhatsApp } from "@/Components/FloatingWhatsApp";
 import {
@@ -60,7 +61,7 @@ export default async function TourDetailPage({ params }: PageProps) {
     notFound();
   }
 
-  const WHATSAPP_NUMBER = "6281234567890";
+  const WHATSAPP_NUMBER = CONTACT_INFO.whatsappNumber;
   const waBookingMessage = encodeURIComponent(
     `Hello Dewata Tour! I would like to book the "${tour.title}" private journey (${tour.duration}). Could you please advise availability and pickup timing?`
   );

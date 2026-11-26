@@ -3,12 +3,13 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { ChevronDown, Menu, X, MessageCircle, MapPin } from "lucide-react";
+import { CONTACT_INFO } from "@/data/contact";
 
 interface NavbarProps {
   whatsappNumber?: string;
 }
 
-export function Navbar({ whatsappNumber = "6281234567890" }: NavbarProps) {
+export function Navbar({ whatsappNumber = CONTACT_INFO.whatsappNumber }: NavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isDestDropdownOpen, setIsDestDropdownOpen] = useState(false);

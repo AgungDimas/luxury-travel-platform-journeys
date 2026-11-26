@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Navbar } from "@/Components/Navbar";
 import { FloatingWhatsApp } from "@/Components/FloatingWhatsApp";
+import { CONTACT_INFO } from "@/data/contact";
 import {
   Car,
   Compass,
@@ -23,7 +24,7 @@ export const metadata: Metadata = {
 };
 
 export default function AboutPage() {
-  const WHATSAPP_NUMBER = "6281234567890";
+  const WHATSAPP_NUMBER = CONTACT_INFO.whatsappNumber;
 
   return (
     <main className="min-h-screen bg-[#FAF8F5] text-[#181A18] relative">

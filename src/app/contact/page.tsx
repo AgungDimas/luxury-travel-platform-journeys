@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { Navbar } from "@/Components/Navbar";
 import { FloatingWhatsApp } from "@/Components/FloatingWhatsApp";
+import { CONTACT_INFO } from "@/data/contact";
 import {
   MessageCircle,
   Phone,
@@ -17,7 +18,7 @@ import {
 } from "lucide-react";
 
 export default function ContactPage() {
-  const WHATSAPP_NUMBER = "6281234567890";
+  const WHATSAPP_NUMBER = CONTACT_INFO.whatsappNumber;
 
   const [formData, setFormData] = useState({
     name: "",
@@ -258,7 +259,7 @@ export default function ContactPage() {
                   <Phone className="h-4 w-4 text-[#E86338] mt-1 shrink-0" />
                   <div>
                     <span className="font-semibold block text-[#181A18]">Direct Phone & WhatsApp</span>
-                    <span>+62 812-3456-7890</span>
+                    <span>{CONTACT_INFO.phoneFormatted}</span>
                   </div>
                 </div>
 

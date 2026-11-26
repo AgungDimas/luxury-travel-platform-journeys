@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { TOURS, Vibe } from "@/data/tours";
+import { CONTACT_INFO } from "@/data/contact";
 import { Clock, MapPin, Users, Check, ArrowRight, MessageCircle } from "lucide-react";
 
 const VIBES: { label: string; value: Vibe }[] = [
@@ -109,7 +110,7 @@ export function TourShowcase() {
           const waMessage = encodeURIComponent(
             `Hello Dewata Tour! I am interested in booking the "${tour.title}" private journey (${tour.duration}). Could you share availability and pickup details?`
           );
-          const waUrl = `https://wa.me/6281234567890?text=${waMessage}`;
+          const waUrl = `https://wa.me/${CONTACT_INFO.whatsappNumber}?text=${waMessage}`;
 
           return (
             <article
@@ -255,7 +256,7 @@ export function TourShowcase() {
           </div>
 
           <a
-            href="https://wa.me/6281234567890?text=Hello%20Dewata%20Tour!%20I%20would%20like%20to%20plan%20a%20custom%20Bali%20private%20itinerary."
+            href={`https://wa.me/${CONTACT_INFO.whatsappNumber}?text=Hello%20Dewata%20Tour!%20I%20would%20like%20to%20plan%20a%20custom%20Bali%20private%20itinerary.`}
             target="_blank"
             rel="noopener noreferrer"
             className="mt-6 flex w-full items-center justify-center gap-2 rounded-xl border border-[#E86338] bg-white px-4 py-3 text-xs sm:text-sm font-semibold text-[#E86338] shadow-xs transition hover:bg-[#E86338] hover:text-white"

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Navbar } from "@/Components/Navbar";
 import { TourShowcase } from "@/Components/TourShowcase";
 import { FloatingWhatsApp } from "@/Components/FloatingWhatsApp";
+import { CONTACT_INFO } from "@/data/contact";
 import {
   Car,
   Compass,
@@ -19,7 +20,7 @@ import {
 } from "lucide-react";
 
 export default function HomePage() {
-  const WHATSAPP_NUMBER = "6281234567890";
+  const WHATSAPP_NUMBER = CONTACT_INFO.whatsappNumber;
   const defaultWaUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
     "Hi Dewata Tour! I would like to inquire about private tours in Bali."
   )}`;
@@ -459,7 +460,7 @@ export default function HomePage() {
               <ul className="mt-4 space-y-2 text-xs sm:text-sm">
                 <li className="flex items-center gap-2">
                   <Phone className="h-3.5 w-3.5 text-[#E86338]" />
-                  <span>+62 812-3456-7890</span>
+                  <span>{CONTACT_INFO.phoneFormatted}</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <MapPin className="h-3.5 w-3.5 text-[#E86338]" />
