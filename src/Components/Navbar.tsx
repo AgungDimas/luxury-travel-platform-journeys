@@ -149,6 +149,28 @@ export function Navbar({ whatsappNumber = CONTACT_INFO.whatsappNumber }: NavbarP
           </div>
 
           <Link
+            href="/#transfers"
+            className={`transition-colors py-1 ${
+              isScrolled
+                ? "text-[#181A18]/80 hover:text-[#E86338]"
+                : "text-white/90 hover:text-white"
+            }`}
+          >
+            Airport Transfer
+          </Link>
+
+          <Link
+            href="/guides"
+            className={`transition-colors py-1 ${
+              isScrolled
+                ? "text-[#181A18]/80 hover:text-[#E86338]"
+                : "text-white/90 hover:text-white"
+            }`}
+          >
+            Travel Guides
+          </Link>
+
+          <Link
             href="/#reviews"
             className={`transition-colors py-1 ${
               isScrolled
@@ -265,6 +287,20 @@ export function Navbar({ whatsappNumber = CONTACT_INFO.whatsappNumber }: NavbarP
               className="py-1 hover:text-[#E86338]"
             >
               Destinations & Packages
+            </Link>
+            <Link
+              href="/#transfers"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="py-1 hover:text-[#E86338]"
+            >
+              Airport Transfer (DPS)
+            </Link>
+            <Link
+              href="/guides"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="py-1 hover:text-[#E86338]"
+            >
+              Travel Guides
             </Link>
             <Link
               href="/#reviews"

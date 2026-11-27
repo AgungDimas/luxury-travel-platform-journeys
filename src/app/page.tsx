@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Navbar } from "@/Components/Navbar";
 import { TourShowcase } from "@/Components/TourShowcase";
+import { AirportTransfer } from "@/Components/AirportTransfer";
 import { FloatingWhatsApp } from "@/Components/FloatingWhatsApp";
 import { CONTACT_INFO } from "@/data/contact";
 import {
@@ -115,6 +116,9 @@ export default function HomePage() {
 
       {/* 3. Interactive Catalog (TourShowcase) */}
       <TourShowcase />
+
+      {/* 3b. Private Airport Transfer (DPS) */}
+      <AirportTransfer />
 
       {/* 4. Why Travelers Choose Dewata ("The Difference") */}
       <section id="why-us" className="border-y border-[#1A1D1A]/10 bg-[#F4EFE6]/60 py-20 sm:py-28">
@@ -431,23 +435,23 @@ export default function HomePage() {
               <ul className="mt-4 space-y-2 text-xs sm:text-sm">
                 <li>
                   <a href="#tours" className="transition hover:text-[#E86338]">
-                    Ubud Spiritual Sanctuary
+                    Private Day Journeys
                   </a>
                 </li>
                 <li>
-                  <a href="#tours" className="transition hover:text-[#E86338]">
-                    Nusa Penida Private Tour
+                  <a href="#transfers" className="transition hover:text-[#E86338]">
+                    Airport Transfers (DPS)
                   </a>
                 </li>
                 <li>
-                  <a href="#tours" className="transition hover:text-[#E86338]">
-                    Uluwatu Sunset & Seafood
-                  </a>
+                  <Link href="/guides" className="transition hover:text-[#E86338]">
+                    Bali Travel Guides
+                  </Link>
                 </li>
                 <li>
-                  <a href="#tours" className="transition hover:text-[#E86338]">
-                    Mount Batur 4WD Safari
-                  </a>
+                  <Link href="/about" className="transition hover:text-[#E86338]">
+                    About Dewata Tour
+                  </Link>
                 </li>
               </ul>
             </div>
